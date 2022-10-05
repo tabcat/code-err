@@ -25,6 +25,7 @@
     "url": "git+https://github.com/tabcat/coderra.git"
   },
   "keywords": [
+    "error",
     "err-code",
     "err",
     "code"
