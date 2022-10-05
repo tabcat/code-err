@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "a more intuitive err-code",
   "type": "module",
-  "types": "./index.d.ts",
+  "types": "./dist/src/index.d.ts",
+  "main": "./dist/src/index.js",
   "directories": {
     "test": "test"
   },
@@ -11,12 +12,6 @@
     "src",
     "dist"
   ],
-  "exports": {
-    ".": {
-      "types": "./dist/src/index.d.ts",
-      "import": "./dist/src/index.js"
-    }
-  },
   "scripts": {
     "lint": "eslint src test",
     "build": "tsc",
