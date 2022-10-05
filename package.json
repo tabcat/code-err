@@ -21,9 +21,9 @@
     "lint": "eslint src test",
     "build": "tsc",
     "postinstall": "npm run build",
-    "test-node": "c8 -c ./test/.c8rc.json npx mocha --config ./test/.mocharc.json",
-    "test-browser": "c8 -c ./test/.c8rc.json npx mocha --config ./test/.mocharc.json",
-    "test": "c8 -c ./test/.c8rc.json npx mocha --config ./test/.mocharc.json"
+    "test:node": "c8 -c ./test/.c8rc.json npx mocha --config ./test/.mocharc.json",
+    "test:browser": "polendina --worker --serviceworker --cleanup --webpack-config webpack.config.ts.js test/test.ts",
+    "test": "npm run lin && npm run test-node && npm run test-browser"
   },
   "repository": {
     "type": "git",
@@ -48,6 +48,9 @@
     "eslint": "^8.24.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
     "mocha": "^10.0.0",
+    "polendina": "^3.1.0",
+    "resolve-typescript-plugin": "^1.2.0",
+    "ts-loader": "^9.4.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
   }

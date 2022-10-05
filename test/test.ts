@@ -1,5 +1,3 @@
-'use strict'
-
 import CodeError from '../src/index.js'
 import { expect } from 'chai'
 
