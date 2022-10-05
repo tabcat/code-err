@@ -1,166 +1,154 @@
-'use strict';
+'use strict'
 
-const errcode = require('../index');
-const expect = require('expect.js');
+import CodeError from '../src/index.js'
+import { expect } from 'chai'
 
-describe('errcode', () => {
-    describe('string as first argument', () => {
-        it('should throw an error', () => {
-            // @ts-expect-error - strings are not supported
-            expect(() => { errcode('my message'); }).to.throwError((err) => {
-                expect(err).to.be.a(TypeError);
-            });
-        });
-    });
+describe('coderra', () => {
+  const message = 'my message'
+  const code = 'ESOME'
+  const props = { foo: 'bar', bar: 'foo' }
 
-    describe('error as first argument', () => {
-        it('should accept an error and do nothing', () => {
-            const myErr = new Error('my message');
-            // @ts-expect-error - more args are expected
-            const err = errcode(myErr);
+  it('should accept a string and add a code', () => {
+    const err = new CodeError(message, code)
 
-            expect(err).to.be(myErr);
-            expect(err.hasOwnProperty(err.code)).to.be(false);
-        });
+    expect(err).to.be.an.instanceof(CodeError)
+    expect(err).to.be.an.instanceof(Error)
+    expect(err.message).to.be.equal(message)
+    expect(err.code).to.be.equal(code)
+    expect(err.props).to.be.deep.equal({})
+  })
 
-        it('should accept an error and add a code', () => {
-            const myErr = new Error('my message');
-            const err = errcode(myErr, 'ESOME');
+  it('should accept a string and add a code & properties', () => {
+    const err = new CodeError(message, code, props)
 
-            expect(err).to.be(myErr);
-            expect(err.code).to.be('ESOME');
-        });
+    expect(err).to.be.an.instanceof(CodeError)
+    expect(err).to.be.an.instanceof(Error)
+    expect(err.message).to.be.equal(message)
+    expect(err.code).to.be.equal(code)
+    expect(err.props.foo).to.be.equal(props.foo)
+    expect(err.props.bar).to.be.equal(props.bar)
+  })
 
-        it('should accept an error object and add code & properties', () => {
-            const myErr = new Error('my message');
-            const err = errcode(myErr, 'ESOME', { foo: 'bar', bar: 'foo' });
+  // describe('string as first argument', () => {
+  // it('should create an error object without code but with properties', () => {
+  //     const err = errcode(myErr, { foo: 'bar', bar: 'foo' });
 
-            expect(err).to.be.an(Error);
-            expect(err.code).to.be('ESOME');
-            expect(err.foo).to.be('bar');
-            expect(err.bar).to.be('foo');
-        });
+  //     expect(err).to.be.an(Error);
+  //     expect(err.code).to.be(undefined);
+  //     expect(err.foo).to.be('bar');
+  //     expect(err.bar).to.be('foo');
+  // });
 
-        it('should create an error object without code but with properties', () => {
-            const myErr = new Error('my message');
-            const err = errcode(myErr, { foo: 'bar', bar: 'foo' });
+  // it('should set a non-writable field', () => {
+  //     const myErr = new Error('my message');
 
-            expect(err).to.be.an(Error);
-            expect(err.code).to.be(undefined);
-            expect(err.foo).to.be('bar');
-            expect(err.bar).to.be('foo');
-        });
+  //     Object.defineProperty(myErr, 'code', {
+  //         value: 'derp',
+  //         writable: false,
+  //     });
+  //     const err = errcode(myErr, 'ERR_WAT');
 
-        it('should set a non-writable field', () => {
-            const myErr = new Error('my message');
+  //     expect(err).to.be.an(Error);
+  //     expect(err.stack).to.equal(myErr.stack);
+  //     expect(err.code).to.be('ERR_WAT');
+  // });
 
-            Object.defineProperty(myErr, 'code', {
-                value: 'derp',
-                writable: false,
-            });
-            const err = errcode(myErr, 'ERR_WAT');
+  // it('should add a code to frozen object', () => {
+  //     const myErr = new Error('my message');
+  //     const err = errcode(Object.freeze(myErr), 'ERR_WAT');
 
-            expect(err).to.be.an(Error);
-            expect(err.stack).to.equal(myErr.stack);
-            expect(err.code).to.be('ERR_WAT');
-        });
+  //     expect(err).to.be.an(Error);
+  //     expect(err.stack).to.equal(myErr.stack);
+  //     expect(err.code).to.be('ERR_WAT');
+  // });
 
-        it('should add a code to frozen object', () => {
-            const myErr = new Error('my message');
-            const err = errcode(Object.freeze(myErr), 'ERR_WAT');
+  // it('should to set a field that throws at assignment time', () => {
+  //     const myErr = new Error('my message');
 
-            expect(err).to.be.an(Error);
-            expect(err.stack).to.equal(myErr.stack);
-            expect(err.code).to.be('ERR_WAT');
-        });
+  //     Object.defineProperty(myErr, 'code', {
+  //         enumerable: true,
+  //         set() {
+  //             throw new Error('Nope!');
+  //         },
+  //         get() {
+  //             return 'derp';
+  //         },
+  //     });
+  //     const err = errcode(myErr, 'ERR_WAT');
 
-        it('should to set a field that throws at assignment time', () => {
-            const myErr = new Error('my message');
+  //     expect(err).to.be.an(Error);
+  //     expect(err.stack).to.equal(myErr.stack);
+  //     expect(err.code).to.be('ERR_WAT');
+  // });
 
-            Object.defineProperty(myErr, 'code', {
-                enumerable: true,
-                set() {
-                    throw new Error('Nope!');
-                },
-                get() {
-                    return 'derp';
-                },
-            });
-            const err = errcode(myErr, 'ERR_WAT');
+  // it('should retain error type', () => {
+  //     const myErr = new TypeError('my message');
 
-            expect(err).to.be.an(Error);
-            expect(err.stack).to.equal(myErr.stack);
-            expect(err.code).to.be('ERR_WAT');
-        });
+  //     Object.defineProperty(myErr, 'code', {
+  //         value: 'derp',
+  //         writable: false,
+  //     });
+  //     const err = errcode(myErr, 'ERR_WAT');
 
-        it('should retain error type', () => {
-            const myErr = new TypeError('my message');
+  //     expect(err).to.be.a(TypeError);
+  //     expect(err.stack).to.equal(myErr.stack);
+  //     expect(err.code).to.be('ERR_WAT');
+  // });
 
-            Object.defineProperty(myErr, 'code', {
-                value: 'derp',
-                writable: false,
-            });
-            const err = errcode(myErr, 'ERR_WAT');
+  // it('should add a code to a class that extends Error', () => {
+  //     class CustomError extends Error {
+  //         /**
+  //          * @param {any} val - wat
+  //          */
+  //         set code(val) {
+  //             throw new Error('Nope!');
+  //         }
+  //     }
 
-            expect(err).to.be.a(TypeError);
-            expect(err.stack).to.equal(myErr.stack);
-            expect(err.code).to.be('ERR_WAT');
-        });
+  //     const myErr = new CustomError('my message');
 
-        it('should add a code to a class that extends Error', () => {
-            class CustomError extends Error {
-                /**
-                 * @param {any} val - wat
-                 */
-                set code(val) {
-                    throw new Error('Nope!');
-                }
-            }
+  //     Object.defineProperty(myErr, 'code', {
+  //         value: 'derp',
+  //         writable: false,
+  //         configurable: false,
+  //     });
+  //     const err = errcode(myErr, 'ERR_WAT');
 
-            const myErr = new CustomError('my message');
+  //     expect(err).to.be.a(CustomError);
+  //     expect(err.stack).to.equal(myErr.stack);
+  //     expect(err.code).to.be('ERR_WAT');
 
-            Object.defineProperty(myErr, 'code', {
-                value: 'derp',
-                writable: false,
-                configurable: false,
-            });
-            const err = errcode(myErr, 'ERR_WAT');
+  //     // original prototype chain should be intact
+  //     expect(() => {
+  //         const otherErr = new CustomError('my message');
 
-            expect(err).to.be.a(CustomError);
-            expect(err.stack).to.equal(myErr.stack);
-            expect(err.code).to.be('ERR_WAT');
+  //         otherErr.code = 'derp';
+  //     }).to.throwError();
+  // });
 
-            // original prototype chain should be intact
-            expect(() => {
-                const otherErr = new CustomError('my message');
+  // it('should support errors that are not Errors', () => {
+  //     const err = errcode({
+  //         message: 'Oh noes!',
+  //     }, 'ERR_WAT');
 
-                otherErr.code = 'derp';
-            }).to.throwError();
-        });
+  //     expect(err.message).to.be('Oh noes!');
+  //     expect(err.code).to.be('ERR_WAT');
+  // });
+  // });
 
-        it('should support errors that are not Errors', () => {
-            const err = errcode({
-                message: 'Oh noes!',
-            }, 'ERR_WAT');
+  // describe('falsy first arguments', () => {
+  //     it('should not allow passing null as the first argument', () => {
+  //         // @ts-expect-error - 'null' is not assignable to parameter of type 'string'
+  //         expect(() => { new CodeError(null, null); }).to.throwError((err) => {
+  //             expect(err).to.be.a(TypeError);
+  //         });
+  //     });
 
-            expect(err.message).to.be('Oh noes!');
-            expect(err.code).to.be('ERR_WAT');
-        });
-    });
-
-    describe('falsy first arguments', () => {
-        it('should not allow passing null as the first argument', () => {
-            // @ts-expect-error - null is not valid param
-            expect(() => { errcode(null); }).to.throwError((err) => {
-                expect(err).to.be.a(TypeError);
-            });
-        });
-
-        it('should not allow passing undefined as the first argument', () => {
-            // @ts-expect-error - undefined is not valid param
-            expect(() => { errcode(undefined); }).to.throwError((err) => {
-                expect(err).to.be.a(TypeError);
-            });
-        });
-    });
-});
+  //     it('should not allow passing undefined as the first argument', () => {
+  //         // @ts-expect-error - 'undefined' is not assignable to parameter of type 'string'
+  //         expect(() => { new CodeError(undefined, undefined); }).to.throwError((err) => {
+  //             expect(err).to.be.a(TypeError);
+  //         });
+  //     });
+  // });
+})
