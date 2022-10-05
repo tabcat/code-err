@@ -15,7 +15,7 @@
   "scripts": {
     "lint": "eslint src test",
     "build": "tsc",
-    "postinstall": "npm run build",
+    "prepublishOnly": "npm run build",
     "test:node": "c8 -c ./config/.c8rc.json npx mocha --config ./config/.mocharc.json",
     "test:browser": "polendina --worker --serviceworker --cleanup --webpack-config ./config/webpack.config.ts.js test/test.ts",
     "test": "npm run lint && npm run test:node && npm run test:browser"
