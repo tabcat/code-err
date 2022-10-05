@@ -1,2 +1,4 @@
 # coderra
-a more intuitive errcode
+
+> a more intuitive err-code
+> create error instances with a code
