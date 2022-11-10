@@ -1,6 +1,6 @@
 import CodeError from '../src/index.js';
 import { expect } from 'chai';
-describe('coderra', () => {
+describe('error-code', () => {
     const message = 'my message';
     const code = 'ESOME';
     const props = { foo: 'bar', bar: 'foo' };

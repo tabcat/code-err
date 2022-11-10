@@ -1,7 +1,7 @@
 {
-  "name": "coderra",
+  "name": "error-code",
   "version": "1.0.0",
-  "description": "a more intuitive err-code",
+  "description": "create error instances with a code (and props)",
   "type": "module",
   "types": "./dist/src/index.d.ts",
   "main": "./dist/src/index.js",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tabcat/coderra.git"
+    "url": "git+https://github.com/tabcat/error-code.git"
   },
   "keywords": [
     "error",
@@ -33,9 +33,9 @@
   "author": "tabcat <tabcat00@proton.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tabcat/coderra/issues"
+    "url": "https://github.com/tabcat/error-code/issues"
   },
-  "homepage": "https://github.com/tabcat/coderra#readme",
+  "homepage": "https://github.com/tabcat/error-code#readme",
   "devDependencies": {
     "@types/chai": "^4.3.3",
     "@types/mocha": "^10.0.0",
