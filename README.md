@@ -46,7 +46,7 @@ new ErrorCode(message, code, props)
 
 ### ErrorCode Class
 
-#### constructor<T>(code: string, props?: T extends Record<string, any>)
+#### constructor\<T\>(code: string, props?: T extends Record<string, any>)
 
 ### ErrorCode Instance
 
@@ -56,5 +56,5 @@ The error code provided in the constructor
 
 #### props: T extends Record<string, any>
 
-If undefined in constructor it is an empty object `{}`.
+If undefined in constructor it is an empty record/object `{}`.
 
