@@ -19,9 +19,11 @@ Extends the builtin Error class with `.code` and `.props` properties for better 
 
 `import ErrorCode from 'error-code'`
 
+<!--
 ### CJS
 
 `const ErrorCode = require('error-code')`
+-->
 
 ## Usage
 
