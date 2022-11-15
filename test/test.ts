@@ -1,7 +1,7 @@
-import ErrorCode from '../src/index.js'
+import CodeError from '../src/index.js'
 import { expect } from 'chai'
 
-describe('error-code', () => {
+describe('code-error', () => {
   const message = 'my message'
   const code = 'ESOME'
   interface Props {
@@ -14,9 +14,9 @@ describe('error-code', () => {
   }
 
   it('should accept a message and add a code', () => {
-    const err = new ErrorCode(message, code)
+    const err = new CodeError(message, code)
 
-    expect(err).to.be.an.instanceof(ErrorCode)
+    expect(err).to.be.an.instanceof(CodeError)
     expect(err).to.be.an.instanceof(Error)
     expect(err.message).to.be.equal(message)
     expect(err.code).to.be.equal(code)
@@ -24,9 +24,9 @@ describe('error-code', () => {
   })
 
   it('should accept a message and add a code & properties', () => {
-    const err = new ErrorCode<Props>(message, code, props)
+    const err = new CodeError<Props>(message, code, props)
 
-    expect(err).to.be.an.instanceof(ErrorCode)
+    expect(err).to.be.an.instanceof(CodeError)
     expect(err).to.be.an.instanceof(Error)
     expect(err.message).to.be.equal(message)
     expect(err.code).to.be.equal(code)

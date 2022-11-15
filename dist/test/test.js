@@ -1,6 +1,6 @@
-import ErrorCode from '../src/index.js';
+import CodeError from '../src/index.js';
 import { expect } from 'chai';
-describe('error-code', () => {
+describe('code-error', () => {
     const message = 'my message';
     const code = 'ESOME';
     const props = {
@@ -8,16 +8,16 @@ describe('error-code', () => {
         bar: 'foo'
     };
     it('should accept a message and add a code', () => {
-        const err = new ErrorCode(message, code);
-        expect(err).to.be.an.instanceof(ErrorCode);
+        const err = new CodeError(message, code);
+        expect(err).to.be.an.instanceof(CodeError);
         expect(err).to.be.an.instanceof(Error);
         expect(err.message).to.be.equal(message);
         expect(err.code).to.be.equal(code);
         expect(err.props).to.be.deep.equal({});
     });
     it('should accept a message and add a code & properties', () => {
-        const err = new ErrorCode(message, code, props);
-        expect(err).to.be.an.instanceof(ErrorCode);
+        const err = new CodeError(message, code, props);
+        expect(err).to.be.an.instanceof(CodeError);
         expect(err).to.be.an.instanceof(Error);
         expect(err.message).to.be.equal(message);
         expect(err.code).to.be.equal(code);

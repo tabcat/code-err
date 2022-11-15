@@ -1,4 +1,4 @@
-# Error-Code
+# CodeError
 
 > create error instances with a code (and props)<br/>
 > a more intuitive [err-code](https://github.com/IndigoUnited/js-err-code)<br/>
@@ -11,18 +11,18 @@ Extends the builtin Error class with `.code` and `.props` properties for better 
 
 ### npm:
 
-`npm install error-code`
+`npm install code-error`
 
 ## Import
 
 ### ESM
 
-`import ErrorCode from 'error-code'`
+`import { CodeError } from 'code-error'`
 
 <!--
 ### CJS
 
-`const ErrorCode = require('error-code')`
+`const CodeError = require('code-error')`
 -->
 
 ## Usage
@@ -34,22 +34,22 @@ interface Props { ... }
 const props: Props = { ... }
 
 // typescript without props
-new ErrorCode(message, code)
+new CodeError(message, code)
 
 // typescript with props
-new ErrorCode<Props>(message, code, props)
+new CodeError<Props>(message, code, props)
 
 // javascript
-new ErrorCode(message, code, props)
+new CodeError(message, code, props)
 ```
 
 ## API
 
-### ErrorCode Class
+### CodeError Class
 
 #### constructor\<T\>(code: string, props?: T extends Record<string, any>)
 
-### ErrorCode Instance
+### CodeError Instance
 
 #### code: string
 

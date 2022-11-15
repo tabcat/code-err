@@ -1,5 +1,5 @@
 {
-  "name": "error-code",
+  "name": "code-error",
   "version": "1.0.0",
   "description": "create error instances with a code (and props)",
   "type": "module",

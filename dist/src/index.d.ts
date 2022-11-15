@@ -1,4 +1,4 @@
-export default class ErrorCode<T extends Record<string, any>> extends Error {
+export default class CodeError<T extends Record<string, any>> extends Error {
     code: string;
     props: T;
     constructor(message: string, code: string, props?: T);
