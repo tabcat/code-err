@@ -51,9 +51,13 @@ new CodeError(message, code, props)
 
 ### CodeError Instance
 
+#### message: string
+
+The error message provided to the constructor
+
 #### code: string
 
-The error code provided in the constructor
+The error code provided to the constructor
 
 #### props: T extends Record<string, any>
 
