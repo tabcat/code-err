@@ -22,7 +22,7 @@ Extends the builtin Error class with `.code` and `.props` properties for better 
 <!--
 ### CJS
 
-`const CodeError = require('code-error')`
+`const { CodeError } = require('code-error')`
 -->
 
 ## Usage
