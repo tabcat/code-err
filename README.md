@@ -11,18 +11,18 @@ Extends the builtin Error class with `.code` and `.props` properties for better 
 
 ### npm:
 
-`npm install code-error`
+`npm install code-err`
 
 ## Import
 
 ### ESM
 
-`import { CodeError } from 'code-error'`
+`import { CodeError } from 'code-err'`
 
 <!--
 ### CJS
 
-`const { CodeError } = require('code-error')`
+`const { CodeError } = require('code-err')`
 -->
 
 ## Usage

@@ -1,7 +1,7 @@
 import { CodeError } from '../src/index.js'
 import { expect } from 'chai'
 
-describe('code-error', () => {
+describe('code-err', () => {
   const message = 'my message'
   const code = 'ESOME'
   interface Props {
