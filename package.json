@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tabcat/error-code.git"
+    "url": "git+https://github.com/tabcat/code-err.git"
   },
   "keywords": [
     "error",
@@ -33,9 +33,9 @@
   "author": "tabcat <tabcat00@proton.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tabcat/error-code/issues"
+    "url": "https://github.com/tabcat/code-err/issues"
   },
-  "homepage": "https://github.com/tabcat/error-code#readme",
+  "homepage": "https://github.com/tabcat/code-err#readme",
   "devDependencies": {
     "@types/chai": "^4.3.3",
     "@types/mocha": "^10.0.0",
