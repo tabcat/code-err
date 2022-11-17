@@ -1,5 +1,5 @@
 // https://github.com/libp2p/js-libp2p/issues/1269#issue-1280763716
-export class CodeError<T extends Record<string, any>> extends Error {
+export class CodeError<T extends Record<string, any> = Record<string, never>> extends Error {
   code: string
   props: T
 
