@@ -61,5 +61,5 @@ The error code provided to the constructor
 
 #### props: T extends Record<string, any>
 
-If undefined in constructor it is an empty record/object `{}`.
+If undefined in constructor it is an empty object `{}` of type Record<string, never>.
 
