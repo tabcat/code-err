@@ -1,4 +1,4 @@
-# CodeError
+# code-err
 
 > create error instances with a code (and props)<br/>
 > a more intuitive [err-code](https://github.com/IndigoUnited/js-err-code)<br/>
