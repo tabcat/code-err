@@ -1,12 +1,14 @@
 // https://github.com/libp2p/js-libp2p/issues/1269#issue-1280763716
 export class CodeError<T extends Record<string, any> = Record<string, never>> extends Error {
-  code: string
-  props: T
+  readonly props: T
 
-  constructor (message: string, code: string, props?: T) {
+  constructor (
+    readonly message: string,
+    readonly code: string,
+    props?: T
+  ) {
     super(message)
 
-    this.code = code
     this.props = props ?? {} as T // eslint-disable-line @typescript-eslint/consistent-type-assertions
   }
 }
