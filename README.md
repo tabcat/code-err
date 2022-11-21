@@ -47,19 +47,20 @@ new CodeError(message, code, props)
 
 ### CodeError Class
 
-#### constructor\<T\>(code: string, props?: T extends Record<string, any>)
+#### constructor\<T extends Record\<string, any\> = Record\<string, never\>\>(message: string, code: string, props?: T)
 
 ### CodeError Instance
 
-#### message: string
+#### `readonly` message: string
 
 The error message provided to the constructor
 
-#### code: string
+#### `readonly` code: string
 
 The error code provided to the constructor
 
-#### props: T extends Record<string, any>
+#### `readonly` props: T
 
-If undefined in constructor it is an empty object `{}` of type Record<string, never>.
+The optional error props provided to the constructor
 
+`default value: {}`
