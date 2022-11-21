@@ -1,4 +1,4 @@
-![npm](https://img.shields.io/npm/v/code-err?color=darkred&style=flat-square)
+[![npm](https://img.shields.io/npm/v/code-err?color=darkred&style=flat-square)](https://www.npmjs.com/package/code-err)
 
 # code-err 
 
