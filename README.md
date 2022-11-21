@@ -1,4 +1,6 @@
-# code-err
+![npm](https://img.shields.io/npm/v/code-err?color=darkred&style=flat-square)
+
+# code-err 
 
 > create error instances with a code (and props)<br/>
 > a more intuitive [err-code](https://github.com/IndigoUnited/js-err-code)<br/>
