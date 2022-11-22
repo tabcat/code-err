@@ -3,7 +3,7 @@ export class CodeError<T extends Record<string, any> = Record<string, never>> ex
   readonly props: T
 
   constructor (
-    readonly message: string,
+    message: string,
     readonly code: string,
     props?: T
   ) {
