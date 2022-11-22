@@ -3,6 +3,7 @@ import { expect } from 'chai'
 
 describe('code-err', () => {
   const message = 'my message'
+  const name = 'CodeError'
   const code = 'ESOME'
   interface Props {
     foo: 'bar'
@@ -19,6 +20,7 @@ describe('code-err', () => {
     expect(err).to.be.an.instanceof(CodeError)
     expect(err).to.be.an.instanceof(Error)
     expect(err.message).to.be.equal(message)
+    expect(err.name).to.be.equal(name)
     expect(err.code).to.be.equal(code)
     expect(err.props).to.be.deep.equal({})
   })
@@ -29,6 +31,7 @@ describe('code-err', () => {
     expect(err).to.be.an.instanceof(CodeError)
     expect(err).to.be.an.instanceof(Error)
     expect(err.message).to.be.equal(message)
+    expect(err.name).to.be.equal(name)
     expect(err.code).to.be.equal(code)
     expect(err.props.foo).to.be.equal(props.foo)
     expect(err.props.bar).to.be.equal(props.bar)
