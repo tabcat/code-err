@@ -49,7 +49,7 @@ new CodeError(message, code, props)
 
 ### CodeError Class
 
-#### constructor<br/>&emsp; \<T extends Record\<string, any\> = Record\<string, never\>\><br/>&emsp; (message: string, code: string, props?: T)
+#### constructor<br/>&emsp; \<T extends Record\<string, any\>\><br/>&emsp; (message: string, code: string, props: T = {})
 
 ### CodeError Instance
 
@@ -64,5 +64,3 @@ The error code provided to the constructor
 #### `readonly` props: T
 
 The optional error props provided to the constructor
-
-`default value: {}`
