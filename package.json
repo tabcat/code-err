@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "lint": "eslint src test",
+    "format": "prettier -w src && eslint --fix src",
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "test:node": "c8 -c ./config/.c8rc.json npx mocha --config ./config/.mocharc.json",
@@ -45,6 +46,7 @@
     "eslint-config-standard-with-typescript": "^23.0.0",
     "mocha": "^10.0.0",
     "polendina": "^3.1.0",
+    "prettier": "^2.8.2",
     "resolve-typescript-plugin": "^1.2.0",
     "ts-loader": "^9.4.1",
     "ts-node": "^10.9.1",
