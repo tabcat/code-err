@@ -36,20 +36,20 @@ interface Props { ... }
 const props: Props = { ... }
 
 // typescript without props
-new CodeError(message, code)
+new CodeError(message, { code })
 
 // typescript with props
-new CodeError<Props>(message, code, props)
+new CodeError<Props>(message, { code, props })
 
 // javascript
-new CodeError(message, code, props)
+new CodeError(message, { code, props })
 ```
 
 ## API
 
 ### CodeError Class
 
-#### constructor<br/>&emsp; \<T extends Record\<string, any\>\><br/>&emsp; (message: string, code: string, props: T = {})
+#### constructor<br/>&emsp; \<T extends Record\<string, any\>\><br/>&emsp; (message?: string, options?: { code?: string, props?: T, name?: string, cause?: unknown })
 
 ### CodeError Instance
 
@@ -57,10 +57,28 @@ new CodeError(message, code, props)
 
 The error message provided to the constructor
 
+*default value*: `''`
+
 #### `readonly` code: string
 
 The error code provided to the constructor
 
+*default value*: `''`
+
 #### `readonly` props: T
 
-The optional error props provided to the constructor
+The error props provided to the constructor
+
+*default value*: `{}`
+
+#### `readonly` name: string
+
+The error name provided to the constructor
+
+*default value*: `CodeError`
+
+#### `readonly` cause: unknown
+
+The error cause provided to the constructor.
+
+*default value*: `undefined`
