@@ -9,8 +9,7 @@
     "test": "test"
   },
   "files": [
-    "src",
-    "dist"
+    "dist/src"
   ],
   "scripts": {
     "lint": "eslint src test",
