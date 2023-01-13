@@ -1,6 +1,6 @@
 {
   "name": "code-err",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "create error instances with a code (and props)",
   "type": "module",
   "types": "./dist/src/index.d.ts",
