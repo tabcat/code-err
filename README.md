@@ -75,7 +75,7 @@ The error props provided to the constructor
 
 The error name provided to the constructor
 
-*default value*: `CodeError`
+*default value*: `'CodeError'`
 
 #### `readonly` cause: unknown
 
