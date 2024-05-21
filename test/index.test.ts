@@ -1,5 +1,5 @@
+import { describe, it, expect } from 'vitest'
 import { CodeError } from '../src/index.js'
-import { expect } from 'chai'
 
 describe('code-err', () => {
   const message = 'my message'
